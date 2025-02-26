@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr' lang="en-IN" dir="ltr">
+ <head>
+   <meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible'/> 
+   <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  
+  <b:if cond='data:blog.faviconUrl'>
+    	<link expr:href='data:blog.faviconUrl' rel='icon' type='image/x-icon'/>
+    	<link expr:href='data:blog.faviconUrl' rel='shortcut icon' type='image/x-icon'/>
+	</b:if>
+  <b:include data='blog' name='all-head-content'/>
+
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css' rel='stylesheet'/>
+
+
+<title>
+<b:if cond='data:blog.pageType == &quot;index&quot;'>
+<data:blog.pageTitle/>
+<b:else/>
+<b:if cond='data:blog.pageType != &quot;error_page&quot;'>
+<data:blog.pageName/> - <data:blog.title/>
+<b:else/>
+404 | <data:blog.title/>
+</b:if>
+</b:if>
+</title>
+
+<b:skin><![CDATA[
+     .status-msg-wrap,.blog-pager,.blog-feeds,.widget-item-control {
+        display: none;
+      }
+]]></b:skin>
+ 
+</head>
+ <body>
+  <b:section class='header' id='header' maxwidgets='' showaddelements='yes'/>
+  
+  <b:section class='main' id='main' showaddelement='yes'>
+ 
+   <b:widget id='HTML11' locked='false' title='' type='HTML' version='2' visible='true'>
+      <b:includable id='main'>
+        <b:if cond='data:blog.url == data:blog.homepageUrl'>
+            <!-- only display title if it's non-empty -->
+            <b:if cond='data:title != &quot;&quot;'>
+                <h2 class='title'><data:title/></h2>
+            </b:if>
+            <div class='widget-content'>
+                <data:content/>
+            </div>
+            
+            <b:include name='quickedit'/>
+        </b:if>
+    </b:includable>
+    </b:widget>
+   <b:widget id='Blog1' locked='false' title='Blog Posts' type='Blog'></b:widget>
+  </b:section>
+ 
+ 
+  <b:section class='footer' id='footer' maxwidgets='' showaddelements='yes'/>
+ 
+ </body>
+</html>
